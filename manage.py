@@ -4,15 +4,19 @@ import sys
 
 
 def main():
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "myportofolio.settings")
+    os.environ.setdefault(
+        "DJANGO_SETTINGS_MODULE",
+        "myportofolioo.settings"
+    )
+
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
         raise ImportError(
-            "Couldn't import Django. Make sure it is installed and "
-            "available on your PYTHONPATH. Did you forget to activate "
-            "a virtual environment?"
+            "Couldn't import Django. "
+            "Make sure Django is installed."
         ) from exc
+
     execute_from_command_line(sys.argv)
 
 
