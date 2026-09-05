@@ -1,147 +1,471 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>DEEP - Portfolio</title>
+    <title>Muhammad Adib Islami — Portfolio</title>
 
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
         rel="stylesheet"
     >
 
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=2">
 </head>
 
 <body>
 
-    <header class="site-header">
-        <div class="container">
+<!-- ================= HEADER ================= -->
 
-            <a href="#profile" class="brand">
-                MUHAMMAD ADIB ISLAMI
-            </a>
+<header class="site-header">
+    <div class="header-container">
 
-            <nav>
-                <a href="#profile">Profile</a>
-            </nav>
+        <a href="#profile" class="brand">
+            <span class="brand-mark">✦</span>
+            <span>Deep<span class="brand-dot">.</span></span>
+        </a>
 
-        </div>
-    </header>
+        <nav class="navigation">
+            <a href="#profile">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#skills">Skills</a>
+        </nav>
+
+        <a href="#contact" class="header-button">
+            Contact Me
+            <span>↗</span>
+        </a>
+
+    </div>
+</header>
 
 
-    <main>
+<!-- ================= MAIN ================= -->
 
-        <section class="hero" id="profile">
+<main>
 
-            <div class="container hero-grid">
+    <!-- ================= HERO ================= -->
 
-                <!-- IDENTITY -->
-                <div class="hero-identity">
+    <section class="hero" id="profile">
 
-                    <p class="hero-kicker">
-                        Information system &middot; Universitas Indonesia
-                    </p>
+        <div class="background-glow glow-one"></div>
+        <div class="background-glow glow-two"></div>
 
-                    <h1>DEEP</h1>
+        <div class="container hero-container">
+
+            <!-- LEFT -->
+
+            <div class="hero-content">
+
+                <div class="availability">
+                    <span class="availability-dot"></span>
+                    UI/UX Designer · Graphic Designer · Product Management
+                </div>
+
+                <h1>
+                    Crafting
+                    <span>digital</span><br>
+
+                    <span>products</span>
+                    that<br>
+
+                    drive
+                    <em>Business</em>
+                </h1>
+
+                <p class="hero-description">
+                    Hi, I'm Muhammad Adib Islami — an Information Systems
+                    student focused on creating impactful digital experiences
+                    and helping businesses stand out.
+                </p>
+
+                <div class="hero-actions">
+
+                    <a href="#contact" class="primary-button">
+                        Contact Me
+                        <span>→</span>
+                    </a>
+
+                    <a href="{% static 'files/CV-Adib.pdf' %}"
+                       class="secondary-button"
+                       target="_blank">
+                        <span class="download-icon">↓</span>
+                        Download CV
+                    </a>
 
                 </div>
 
+                <div class="social-area">
 
-                <!-- PHOTO -->
-                <div class="hero-photo">
+                    <span>Follow me:</span>
 
-                    <div class="photo-block"></div>
+                    <a href="https://github.com/deepanooo"
+                       target="_blank"
+                       class="social-link"
+                       aria-label="GitHub">
+                        GH
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/muhammadadibislami/"
+                       target="_blank"
+                       class="social-link"
+                       aria-label="LinkedIn">
+                        in
+                    </a>
+
+                    <a href="https://instagram.com/"
+                       target="_blank"
+                       class="social-link"
+                       aria-label="Instagram">
+                        IG
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT -->
+
+            <div class="hero-visual">
+
+                <div class="university-card">
+                    <strong>Universitas Indonesia</strong>
+                    <span>Information System Student.</span>
+                </div>
+
+                <div class="photo-wrapper">
+
+                    <div class="photo-glow"></div>
 
                     <img
-                        class="avatar"
                         src="{% static 'img/adib.jpg' %}"
-                        alt="Photo of Burhan"
+                        alt="Muhammad Adib Islami"
+                        class="avatar"
                     >
 
                 </div>
 
+                <div class="internship-card">
+                    <span class="internship-dot"></span>
+                    Available for internship
+                </div>
 
-                <!-- DETAILS -->
-                <div class="hero-details">
+                <div class="floating-element element-one">
+                    <span>01</span>
+                    PRODUCT
+                </div>
 
-                    <p class="bio">
-                        Hi, I'm Muhammad Adib Islami — a UI/UX and graphic designer focused on creating impactful digital experiences and helping businesses stand out.
+                <div class="floating-element element-two">
+                    UI/UX
+                    <span>DESIGN</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- SCROLL -->
+
+        <div class="scroll-indicator">
+            <span>SCROLL</span>
+            <span class="scroll-arrow">⌄</span>
+        </div>
+
+    </section>
+
+
+    <!-- ================= SKILLS ================= -->
+
+    <section class="skills-section" id="skills">
+
+        <p class="skills-title">
+            Technologies I work with DenganKita
+        </p>
+
+        <div class="skills-marquee">
+
+            <span>React</span>
+            <span>HTML</span>
+            <span>JavaScript</span>
+            <span>Python</span>
+            <span>Java</span>
+            <span>Canva</span>
+            <span>Tailwind CSS</span>
+            <span>Git</span>
+            <span>Figma</span>
+            <span>Affinity</span>
+            <span>React</span>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= PROJECTS ================= -->
+
+    <section class="projects" id="projects">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <div>
+                    <p class="section-kicker">
+                        Selected Work
                     </p>
 
+                    <h2>
+                        Projects & Experiences
+                    </h2>
+                </div>
 
-                    <dl class="meta-list">
+                <p class="section-description">
+                    A collection of projects and experiences that represent
+                    my interests in technology, product development,
+                    business, and digital design.
+                </p>
 
-                        <div class="meta-row">
-                            <dt>NPM</dt>
-                            <dd>2506657030</dd>
+            </div>
+
+
+            <div class="project-grid">
+
+                <!-- PROJECT 01 -->
+
+                <article class="project-card">
+
+                    <div class="project-top">
+                        <span class="project-number">01</span>
+                        <span class="project-arrow">↗</span>
+                    </div>
+
+                    <div class="project-content">
+
+                        <p class="project-category">
+                            Product · UI/UX
+                        </p>
+
+                        <h3>
+                            DenganKita
+                        </h3>
+
+                        <p>
+                            A digital platform concept focused on building
+                            meaningful connections and improving user
+                            experiences through technology and thoughtful
+                            product design.
+                        </p>
+
+                        <div class="project-tags">
+                            <span>Product</span>
+                            <span>UI/UX</span>
+                            <span>Technology</span>
                         </div>
 
-                        <div class="meta-row">
-                            <dt>Program</dt>
-                            <dd>S1 Sistem Informasi</dd>
+                    </div>
+
+                </article>
+
+
+                <!-- PROJECT 02 -->
+
+                <article class="project-card">
+
+                    <div class="project-top">
+                        <span class="project-number">02</span>
+                        <span class="project-arrow">↗</span>
+                    </div>
+
+                    <div class="project-content">
+
+                        <p class="project-category">
+                            Web · Esports
+                        </p>
+
+                        <h3>
+                            UI Games League
+                        </h3>
+
+                        <p>
+                            A competitive gaming platform and event experience
+                            designed to connect students through esports,
+                            competition, and community engagement.
+                        </p>
+
+                        <div class="project-tags">
+                            <span>Web Design</span>
+                            <span>Esports</span>
+                            <span>Frontend</span>
                         </div>
 
-                    </dl>
+                    </div>
+
+                </article>
 
 
-                    <div class="social-links">
+                <!-- PROJECT 03 -->
 
-                        <a
-                            href="https://github.com/deepanooo"
-                            class="social-link"
-                            target="_blank"
-                        >
-                            GitHub
-                        </a>
+                <article class="project-card">
 
-                        <a
-                            href="https://www.linkedin.com/in/muhammadadibislami/"
-                            class="social-link"
-                            target="_blank"
-                        >
-                            LinkedIn
-                        </a>
+                    <div class="project-top">
+                        <span class="project-number">03</span>
+                        <span class="project-arrow">↗</span>
+                    </div>
 
-                        <a
-                            href="mailto:islamifxadib@gmail.com.com"
-                            class="social-link"
-                        >
-                            Email
-                        </a>
+                    <div class="project-content">
 
+                        <p class="project-category">
+                            Development · Design
+                        </p>
+
+                        <h3>
+                            Personal Portfolio
+                        </h3>
+
+                        <p>
+                            A personal portfolio website created to showcase
+                            my academic journey, experiences, projects,
+                            interests, and skills in technology and design.
+                        </p>
+
+                        <div class="project-tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>Django</span>
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= EXPERIENCE ================= -->
+
+    <section class="experience" id="experience">
+
+        <div class="container">
+
+            <p class="section-kicker">
+                Background
+            </p>
+
+            <h2>
+                Experience 
+            </h2>
+
+            <div class="experience-grid">
+
+                <div class="experience-item">
+
+                    <span class="experience-year">
+                        2025 — Present
+                    </span>
+
+                    <div>
+                        <h3>
+                            BEM Fasikom UI
+                        </h3>
+
+                        <p>
+                            UI/UX - Business and Partnership Bereau
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="experience-item">
+
+                    <span class="experience-year">
+                        2025 — Present
+                    </span>
+
+                    <div>
+                        <h3>
+                            DDP 0
+                        </h3>
+                            PIC - Visual Design
+                        <p>
+                            
+                        </p>
                     </div>
 
                 </div>
 
             </div>
 
-        </section>
+        </div>
 
-    </main>
+    </section>
 
 
-    <footer class="site-footer">
+    <!-- ================= CONTACT ================= -->
 
-        <div class="container">
+    <section class="contact" id="contact">
 
-            <p>
-                &copy; 2026 DEEP. Fakultas Ilmu Komputer, Universitas Indonesia.
-            </p>
+        <div class="container contact-container">
+
+            <div>
+
+                <p class="section-kicker">
+                    Let's work together
+                </p>
+
+                <h2>
+                    Have a project<br>
+                    <span>in mind?</span>
+                </h2>
+
+            </div>
+
+            <a href="mailto:islamifxadib@gmail.com"
+               class="contact-button">
+
+                Get in touch
+                <span>↗</span>
+
+            </a>
 
         </div>
 
-    </footer>
+    </section>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="site-footer">
+
+    <div class="container footer-container">
+
+        <p>
+            © 2026 Muhammad Adib Islami.
+        </p>
+
+        <p>
+            Fakultas Ilmu Komputer · Universitas Indonesia
+        </p>
+
+    </div>
+
+</footer>
+
 
 </body>
-
 </html>
