@@ -79,20 +79,14 @@ img {
 .brand {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 6px;
 
     font-family: "Poppins", sans-serif;
-    font-size: 21px;
+    font-size: 24px;
     font-weight: 700;
 }
 
-.brand-mark {
-    font-size: 27px;
 
-    color: #12d7d0;
-
-    transform: rotate(20deg);
-}
 
 .brand-dot {
     color: #15d9e5;
@@ -702,53 +696,6 @@ img {
 }
 
 
-/* =====================================================
-   SKILLS
-===================================================== */
-
-.skills-section {
-    padding: 25px 0 55px;
-
-    background: #050b12;
-
-    overflow: hidden;
-}
-
-.skills-title {
-    text-align: center;
-
-    color: #687580;
-
-    font-size: 13px;
-
-    margin-bottom: 35px;
-}
-
-.skills-marquee {
-    display: flex;
-
-    justify-content: space-around;
-    align-items: center;
-
-    gap: 70px;
-
-    white-space: nowrap;
-
-    padding: 0 40px;
-
-    opacity: 0.5;
-}
-
-.skills-marquee span {
-    font-family: "Poppins", sans-serif;
-
-    font-size: 20px;
-
-    font-weight: 700;
-
-    color: #53606b;
-}
-
 
 /* =====================================================
    PROJECTS
@@ -1259,24 +1206,11 @@ img {
         font-size: 15px;
     }
 
-    .internship-card {
-        right: -5px;
-        bottom: 20px;
-    }
-
     .floating-element {
         display: none;
     }
 
-    .skills-marquee {
-        gap: 35px;
 
-        overflow: hidden;
-    }
-
-    .skills-marquee span {
-        font-size: 16px;
-    }
 
     .projects,
     .experience,
