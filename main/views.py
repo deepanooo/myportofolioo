@@ -1,21 +1,27 @@
 from django.shortcuts import render
-from main.models import Experience
+from main.models import Experience, Project
+
 
 def show_main(request):
     context = {
-        "name": "Nama Lengkap Anda",           # Ganti dengan nama Anda
-        "npm": "NPM_Anda",                     # Ganti dengan NPM Anda
-        "study_program": "S1 Ilmu Komputer",   # Program Studi
-        "bio": (
-            "Mahasiswa Fakultas Ilmu Komputer Universitas Indonesia "
-            "yang tertarik pada software engineering dan pemrograman berbasis platform."
-        ),
+        "name": "Muhammad Adib Islami",
+        "npm": "2406357400",
+        "class_name": "PBP C",
     }
     return render(request, "index.html", context)
 
+
 def show_experience(request):
     context = {
-        "name": "Nama Lengkap Anda",           # Sesuaikan nama
-        "experience_list": Experience.objects.all(),
+        "name": "Muhammad Adib Islami",
+        "experiences": Experience.objects.all(),
     }
     return render(request, "experience.html", context)
+
+
+def show_project(request):
+    context = {
+        "name": "Muhammad Adib Islami",
+        "project_list": Project.objects.all(),
+    }
+    return render(request, "projects.html", context)

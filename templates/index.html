@@ -1,19 +1,36 @@
-<nav>
-    <a href="{% url 'main:show_main' %}">Profile</a>
-    <a href="{% url 'main:show_experience' %}">Experience</a>
-</nav>
-<title>{{ name }} - Portofolio</title>
-...
-<a href="{% url 'main:show_main' %}" class="brand">{{ name }}</a>
-...
-<h1>{{ name }}</h1>
-...
-<p class="bio">{{ bio }}</p>
-...
-<dd>{{ npm }}</dd>
-...
-<dd>{{ study_program }}</dd>
-...
-<footer>
-    <p>&copy; 2026 {{ name }}. Fakultas Ilmu Komputer, Universitas Indonesia.</p>
-</footer>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio - {{ name }}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <header>
+        <a href="{% url 'main:show_main' %}" class="brand">{{ name }}</a>
+        <nav>
+            <a href="{% url 'main:show_main' %}">Profile</a>
+            <a href="{% url 'main:show_experience' %}">Experience</a>
+            <a href="{% url 'main:show_project' %}">Projects</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="container">
+                <h1>Selamat Datang di Portofolio {{ name }}</h1>
+                <p>NPM: {{ npm }} | Kelas: {{ class_name }}</p>
+                <div class="hero-buttons">
+                    <a href="{% url 'main:show_experience' %}" class="btn">Lihat Experience</a>
+                    <a href="{% url 'main:show_project' %}" class="btn btn-secondary">Lihat Projects</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 {{ name }}. Fakultas Ilmu Komputer, Universitas Indonesia.</p>
+    </footer>
+</body>
+</html>

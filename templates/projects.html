@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Experience - {{ name }}</title>
+    <title>Projects - {{ name }}</title>
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
@@ -17,26 +17,22 @@
     </header>
 
     <main>
-        <section class="experience-section">
+        <section class="experience-section" id="projects">
             <div class="container">
-                <p class="section-kicker">Riwayat Aktivitas</p>
-                <h1>Experience</h1>
+                <p class="section-kicker">Karya & Proyek</p>
+                <h1>Projects</h1>
                 <div class="experience-grid">
-                    {% for exp in experiences %}
+                    {% for project in project_list %}
                         <article class="experience-card">
-                            <span class="experience-category">{{ exp.category }}</span>
-                            <h2>{{ exp.title }}</h2>
-                            <p class="experience-description">{{ exp.description }}</p>
-                            <p class="experience-status">
-                                {% if exp.is_ongoing %}
-                                    Sedang berlangsung
-                                {% else %}
-                                    Selesai
-                                {% endif %}
-                            </p>
+                            <span class="experience-category">{{ project.tech_stack }}</span>
+                            <h2>{{ project.title }}</h2>
+                            <p class="experience-description">{{ project.description }}</p>
+                            {% if project.repository_url %}
+                                <p class="experience-status"><a href="{{ project.repository_url }}" target="_blank">Lihat Repositori &rarr;</a></p>
+                            {% endif %}
                         </article>
                     {% empty %}
-                        <p class="empty-state">Belum ada pengalaman yang ditambahkan.</p>
+                        <p class="empty-state">Belum ada proyek yang ditambahkan.</p>
                     {% endfor %}
                 </div>
             </div>
