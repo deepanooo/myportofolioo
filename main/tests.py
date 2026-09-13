@@ -35,12 +35,12 @@ class MainTest(TestCase):
     def test_empty_experience_page(self):
         Experience.objects.all().delete()
         response = self.client.get(reverse("main:show_experience"))
+        self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Belum ada pengalaman yang ditambahkan.")
 
     def test_completed_experience(self):
         self.experience.ended_at = timezone.now()
         self.experience.save()
-        response = self.client.get(reverse("main:show_experience"))
         self.assertFalse(self.experience.is_ongoing)
 
 
@@ -66,4 +66,5 @@ class ProjectTest(TestCase):
     def test_empty_project_page(self):
         Project.objects.all().delete()
         response = self.client.get(reverse("main:show_project"))
+        self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Belum ada proyek yang ditambahkan.")
