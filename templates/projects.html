@@ -1,10 +1,12 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - {{ name }}</title>
-    <link rel="stylesheet" href="/static/css/style.css">
+    <!-- Penggunaan tag static Django -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <header>
@@ -28,7 +30,11 @@
                             <h2>{{ project.title }}</h2>
                             <p class="experience-description">{{ project.description }}</p>
                             {% if project.repository_url %}
-                                <p class="experience-status"><a href="{{ project.repository_url }}" target="_blank">Lihat Repositori &rarr;</a></p>
+                                <p class="experience-status">
+                                    <a href="{{ project.repository_url }}" target="_blank" rel="noopener noreferrer" class="project-link">
+                                        Lihat Repositori &rarr;
+                                    </a>
+                                </p>
                             {% endif %}
                         </article>
                     {% empty %}

@@ -1,45 +1,233 @@
-.experience-section {
-    padding: 4rem 0;
-    border-top: 1px solid var(--line);
+/* Variable warna tema gelap */
+:root {
+    --bg-dark: #0a0f12;
+    --card-bg: rgba(18, 28, 32, 0.6);
+    --card-border: rgba(45, 212, 191, 0.2);
+    --accent-cyan: #2dd4bf;
+    --accent-cyan-hover: #14b8a6;
+    --text-primary: #ffffff;
+    --text-muted: #94a3b8;
+    --radius: 12px;
 }
-.section-kicker {
-    color: var(--accent-dark);
-    font-size: 0.8rem;
+
+/* Reset Dasar & Layout Utama */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Container Spacing */
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Header & Navbar Dark Cyan */
+header {
+    background-color: rgba(10, 15, 18, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 1.25rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.brand {
+    color: var(--text-primary);
+    font-size: 1.25rem;
     font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: -0.01em;
 }
-.experience-section h1 {
-    margin: 0.4rem 0 1.5rem;
-    font-size: 2rem;
+
+nav {
+    display: flex;
+    gap: 1.5rem;
 }
-.experience-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+
+nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+nav a:hover {
+    color: var(--accent-cyan);
+}
+
+/* Hero Section (Halaman Profile) */
+.hero-section {
+    padding: 6rem 0;
+    text-align: left;
+}
+
+.hero-section h1 {
+    font-size: 2.75rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.hero-section p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.hero-buttons {
+    display: flex;
     gap: 1rem;
 }
-.experience-card {
-    padding: 1.25rem;
-    background-color: #fff;
-    border: 1px solid var(--line);
+
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--accent-cyan);
+    color: #0a0f12;
+    font-weight: 600;
     border-radius: var(--radius);
+    text-decoration: none;
+    transition: all 0.2s ease;
 }
-.experience-category {
-    color: var(--accent-dark);
-    font-size: 0.75rem;
+
+.btn:hover {
+    background-color: var(--accent-cyan-hover);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--card-border);
+}
+
+.btn-secondary:hover {
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+    background-color: transparent;
+}
+
+/* Section Grid (Experience & Projects) */
+.experience-section {
+    padding: 4rem 0 6rem;
+    flex: 1;
+}
+
+.section-kicker {
+    color: var(--accent-cyan);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.experience-section h1 {
+    margin: 0.4rem 0 2rem;
+    font-size: 2.25rem;
     font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+}
+
+.experience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.experience-card {
+    padding: 1.5rem;
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.experience-card:hover {
+    border-color: var(--accent-cyan);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px -5px rgba(45, 212, 191, 0.15);
+}
+
+.experience-category {
+    color: var(--accent-cyan);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
 }
+
 .experience-card h2 {
-    margin: 0.5rem 0;
+    margin: 0.6rem 0;
     font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
 }
+
 .experience-description,
 .empty-state {
     color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
 }
+
 .experience-status {
-    margin-top: 1rem;
+    margin-top: 1.25rem;
     font-size: 0.85rem;
     font-weight: 600;
+    color: var(--accent-cyan);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.experience-status::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent-cyan);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--accent-cyan);
+}
+
+.project-link {
+    color: var(--accent-cyan);
+    text-decoration: none;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.project-link:hover {
+    color: #5eead4;
+    text-decoration: underline;
+}
+
+/* Footer Dark */
+footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2rem 5%;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    margin-top: auto;
 }

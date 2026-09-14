@@ -5,7 +5,7 @@ from main.models import Experience, Project
 def show_main(request):
     context = {
         "name": "Muhammad Adib Islami",
-        "npm": "2406357400",
+        "npm": "2506657030",
         "class_name": "PBP C",
     }
     return render(request, "index.html", context)
