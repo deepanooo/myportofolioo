@@ -80,3 +80,5 @@ fungsi yang berbeda.
   Perintah ini digunakan untuk menjalankan migration yang telah dibuat
   dan menerapkan perubahan struktur database yang diperlukan.
 
+# DEKLARASI AI
+AI digunakan untuk membantu proses pembuatan website menambahkan style dengan syntax yang rumit.
