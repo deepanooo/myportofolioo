@@ -80,6 +80,3 @@ fungsi yang berbeda.
   Perintah ini digunakan untuk menjalankan migration yang telah dibuat
   dan menerapkan perubahan struktur database yang diperlukan.
 
-# DEKLARASI AI
-
-AI digunakan sebagai alat bantu untuk memahami konsep Django, membantu proses pengembangan, serta menyusun dokumentasi proyek. Setiap hasil dari AI ditinjau dan disesuaikan kembali oleh anggota kelompok agar sesuai dengan pemahaman dan kebutuhan proyek.
