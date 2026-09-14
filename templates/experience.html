@@ -9,7 +9,10 @@
 </head>
 <body>
     <header>
-        <a href="{% url 'main:show_main' %}" class="brand">{{ name }}</a>
+        <a href="{% url 'main:show_main' %}" class="brand">
+            <img src="{% static 'img/Frame 3.svg' %}" alt="Logo" class="nav-logo">
+            <span>{{ name }}</span>
+        </a>
         <nav>
             <a href="{% url 'main:show_main' %}">Profile</a>
             <a href="{% url 'main:show_experience' %}">Experience</a>
