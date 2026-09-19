@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-2s$7@p#o6x4gr_6do)0539k94i)_c=k-+izr*n5sirk&)=lzhk
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1","muhammad-adib51-portofolio.pws.cs.ui.ac.id"]
 
 # Pisahkan beberapa origin dengan koma saat deployment, misalnya:
 # CSRF_TRUSTED_ORIGINS=https://namaprojek.pbp.cs.ui.ac.id
