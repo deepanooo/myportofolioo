@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}DeepPerceptron. | Muhammad Adib Islami{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=20260918-3">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    {% block meta %}{% endblock meta %}
+</head>
+<body>
+    <div class="bg-glow glow-one"></div>
+    <div class="bg-glow glow-two"></div>
+    <header class="navbar">
+        <a href="{% url 'main:show_main' %}" class="logo">
+            <div><img src="{% static 'img/Frame 3.svg' %}" alt="DeepPerceptron logo"></div>
+            <span>Deep<span>Perceptron</span>.</span>
+        </a>
+        <nav class="nav-links">
+            <a href="{% url 'main:show_main' %}"{% if request.path == '/' %} class="active"{% endif %}>About</a>
+            <a href="{% url 'main:show_project' %}"{% if '/project/' in request.path %} class="active"{% endif %}>Projects</a>
+            <a href="{% url 'main:show_experience' %}"{% if '/experience/' in request.path %} class="active"{% endif %}>Experience</a>
+            <a href="{% url 'main:show_main' %}#contact">Contact</a>
+        </nav>
+        <a href="{% url 'main:show_project' %}" class="nav-button">View Project <i data-lucide="arrow-up-right"></i></a>
+        <button class="menu-toggle" type="button" aria-label="Buka menu"><i data-lucide="menu"></i></button>
+    </header>
+
+    {% if messages %}
+        <div class="flash-messages section-container">
+            {% for message in messages %}<p class="flash-message {{ message.tags }}">{{ message }}</p>{% endfor %}
+        </div>
+    {% endif %}
+
+    {% block content %}{% endblock content %}
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <a href="{% url 'main:show_main' %}" class="logo"><span>Deep<span>Perceptron</span>.</span></a>
+            <p>© 2026 Muhammad Adib Islami. All rights reserved.</p>
+            <div class="footer-socials">
+                <a href="#" aria-label="GitHub"><i data-lucide="github"></i></a>
+                <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+                <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        lucide.createIcons();
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        menuToggle?.addEventListener('click', () => navLinks.classList.toggle('active'));
+        document.querySelectorAll('.nav-links a').forEach((link) => link.addEventListener('click', () => navLinks.classList.remove('active')));
+        {% block scripts %}{% endblock scripts %}
+    </script>
+</body>
+</html>

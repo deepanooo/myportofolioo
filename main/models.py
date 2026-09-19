@@ -1,5 +1,6 @@
 import uuid
 from django.db import models
+from django.utils import timezone
 
 
 class Experience(models.Model):
@@ -7,7 +8,7 @@ class Experience(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
     category = models.CharField(max_length=50, default="volunteer")
-    started_at = models.DateField(auto_now_add=True)
+    started_at = models.DateField(default=timezone.now)
     ended_at = models.DateField(null=True, blank=True)
 
     @property
@@ -24,6 +25,7 @@ class Project(models.Model):
     description = models.TextField()
     tech_stack = models.CharField(max_length=255)
     repository_url = models.URLField(blank=True, default="")
+    project_image_url = models.URLField(blank=True, default="", max_length=500)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

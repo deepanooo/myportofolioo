@@ -1,41 +1,218 @@
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio - {{ name }}</title>
-    <!-- Perbaikan pada tag link CSS -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-    <header>
-        <a href="{% url 'main:show_main' %}" class="brand">
-            <img src="{% static 'img/Frame 3.svg' %}" alt="Logo" class="nav-logo">
-            <span>{{ name }}</span>
-        </a>
-        <nav>
-            <a href="{% url 'main:show_main' %}">Profile</a>
-            <a href="{% url 'main:show_experience' %}">Experience</a>
-            <a href="{% url 'main:show_project' %}">Projects</a>
-        </nav>
-    </header>
 
+{% block content %}
     <main>
-        <section class="hero-section">
-            <div class="container">
-                <h1>Selamat Datang di Portofolio {{ name }}</h1>
-                <p>NPM: {{ npm }} | Kelas: {{ class_name }}</p>
-                <div class="hero-buttons">
-                    <a href="{% url 'main:show_experience' %}" class="btn">Lihat Experience</a>
-                    <a href="{% url 'main:show_project' %}" class="btn btn-secondary">Lihat Projects</a>
+
+        <!-- HERO -->
+        <section id="home" class="hero section-container">
+
+            <div class="hero-content">
+                <div class="eyebrow">
+                    <span class="eyebrow-dot"></span>
+                    UI/UX Designer · Graphic Designer · Product Management
+                </div>
+
+                <h1>
+                    Crafting <span class="gradient-text">digital</span><br>
+                    <span class="gradient-text">products</span> that<br>
+                    drive <em>Business</em>
+                </h1>
+
+                <p class="hero-description">
+                    Hi, I'm Muhammad Adib Islami — a UI/UX and graphic designer
+                    focused on creating impactful digital experiences and helping
+                    businesses stand out.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#contact" class="button button-primary">
+                        Contact Me
+                        <i data-lucide="arrow-right"></i>
+                    </a>
+
+                    <a href="#" class="button button-outline">
+                        <i data-lucide="download"></i>
+                        Download CV
+                    </a>
+                </div>
+
+                <div class="social-links">
+                    <span>Follow me:</span>
+                    <a href="#"><i data-lucide="github"></i></a>
+                    <a href="#"><i data-lucide="linkedin"></i></a>
+                    <a href="#"><i data-lucide="instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="university-badge">
+                    <strong>Universitas Indonesia</strong>
+                    <span>Information System Student.</span>
+                </div>
+
+                <div class="profile-frame">
+                    <img src="{% static 'img/adib.jpg' %}" alt="Muhammad Adib Islami">
+                </div>
+
+                <div class="availability">
+                    <span class="status-dot"></span>
+                    Available for internship
+                </div>
+            </div>
+
+            <div class="technologies">
+                <p>Technologies I work with</p>
+                <div class="tech-list">
+                    <span>Affinity</span>
+                    <span>React</span>
+                    <span>HTML</span>
+                    <span>JavaScript</span>
+                    <span>Python</span>
+                    <span>Java</span>
+                    <span>Canva</span>
+                    <span>Tailwind CSS</span>
+                    <span>Git</span>
+                    <span>Figma</span>
+                </div>
+            </div>
+
+            <a href="#about" class="scroll-down">
+                <span>SCROLL</span>
+                <i data-lucide="chevron-down"></i>
+            </a>
+        </section>
+
+
+        <!-- ABOUT -->
+        <section id="about" class="about section-container">
+
+            <div class="about-header">
+                <span class="section-label">ABOUT ME</span>
+                <h2>
+                    <span>Designing experiences</span><br>
+                    <em>that people love to use.</em>
+                </h2>
+            </div>
+
+            <div class="about-grid">
+
+                <div class="about-text">
+                    <p>
+                        I'm a passionate UI/UX and graphic designer focused on
+                        creating intuitive and impactful digital experiences.
+                        My journey started from a strong interest in visual
+                        design, which grew into a deeper understanding of how
+                        users interact with digital products and how design can
+                        solve real problems.
+                    </p>
+
+                    <p>
+                        As an Information Systems student, I combine design,
+                        technology, and business insight to create user-centered
+                        solutions that are not only visually appealing but also
+                        functional and effective. I have a strong interest in
+                        product management, which shapes the way I think about
+                        aligning user needs with business goals.
+                    </p>
+
+                    <p>
+                        I specialize in crafting digital interfaces and visual
+                        designs that balance aesthetics and usability. I enjoy
+                        building ideas and turning them into meaningful digital
+                        products that deliver real value.
+                    </p>
+
+                    <div class="mission-box">
+                        <i data-lucide="quote"></i>
+                        <p>
+                            "My mission is to create meaningful digital
+                            experiences that users enjoy and that deliver real
+                            value for businesses, by combining intuitive design
+                            with clear purpose."
+                        </p>
+                    </div>
+                </div>
+
+                <div class="feature-cards">
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i data-lucide="brain"></i>
+                        </div>
+                        <h3>Product Thinking</h3>
+                        <p>
+                            Designing user-centered solutions with a strong
+                            focus on business goals and real user needs.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i data-lucide="rocket"></i>
+                        </div>
+                        <h3>Performance</h3>
+                        <p>
+                            Crafting intuitive and engaging interfaces that
+                            deliver seamless and meaningful user journeys.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i data-lucide="users"></i>
+                        </div>
+                        <h3>Collaboration</h3>
+                        <p>
+                            Working closely with cross-functional teams to turn
+                            ideas into impactful digital products.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i data-lucide="lightbulb"></i>
+                        </div>
+                        <h3>Innovation</h3>
+                        <p>
+                            Combining creativity and logical thinking to build
+                            innovative solutions that solve real problems.
+                        </p>
+                    </div>
+
                 </div>
             </div>
         </section>
-    </main>
 
-    <footer>
-        <p>&copy; 2026 {{ name }}. Fakultas Ilmu Komputer, Universitas Indonesia.</p>
-    </footer>
-</body>
-</html>
+
+        <!-- CONTACT -->
+        <section id="contact" class="contact section-container">
+            <div class="contact-box">
+                <span class="section-label">LET'S CONNECT</span>
+                <h2>Have an idea?<br><em>Let's build it.</em></h2>
+                <p>
+                    I'm always open to discussing new projects, creative ideas,
+                    or opportunities to collaborate.
+                </p>
+                <a href="mailto:yourmail@example.com" class="button button-primary">
+                    Get in Touch
+                    <i data-lucide="arrow-up-right"></i>
+                </a>
+            </div>
+        </section>
+
+    </main>
+    <button class="back-to-top" type="button" aria-label="Kembali ke atas">
+        <i data-lucide="arrow-up"></i>
+    </button>
+{% endblock content %}
+
+{% block scripts %}
+        const backToTop = document.querySelector(".back-to-top");
+        window.addEventListener("scroll", () => {
+            backToTop.classList.toggle("show", window.scrollY > 500);
+        });
+        backToTop.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+{% endblock scripts %}

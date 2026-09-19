@@ -4,8 +4,7 @@ venv/
 .venv/
 
 # Environment Variables
-.env
-.env.prod
+.env*
 
 # Django
 db.sqlite3
