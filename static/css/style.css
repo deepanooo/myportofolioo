@@ -2066,6 +2066,28 @@ section {
 .project-delete-modal__actions { justify-content: flex-end; margin-top: 26px; }
 .button-danger { border: 0; background: #b91c1c; color: white; cursor: pointer; }
 
+.footer-socials .social-github:hover { color: #ffffff; }
+.footer-socials .social-linkedin:hover { color: #60a5fa; }
+.footer-socials .social-instagram:hover { color: #f472b6; }
+
+.footer-socials .social-icon {
+    width: 17px;
+    height: 17px;
+    fill: currentColor;
+    stroke: none;
+}
+
+.footer-socials .social-instagram .social-icon {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+}
+
+.footer-socials .social-instagram .social-icon-fill {
+    fill: currentColor;
+    stroke: none;
+}
+
 @media (max-width: 768px) {
     .project-page-hero {
         padding-top: 62px;

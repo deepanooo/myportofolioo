@@ -34,10 +34,9 @@ ALLOWED_HOSTS = ["localhost", "127.0.0.1","muhammad-adib51-portofolio.pws.cs.ui.
 # Pisahkan beberapa origin dengan koma saat deployment, misalnya:
 # CSRF_TRUSTED_ORIGINS=https://namaprojek.pbp.cs.ui.ac.id
 CSRF_TRUSTED_ORIGINS = [
-    origin.strip()
-    for origin in os.getenv("CSRF_TRUSTED_ORIGINS", "").split(",")
-    if origin.strip()
+    "https://muhammad.adib51.tugaskelompokc10.pws.cs.ui.ac.id",
 ]
+
 
 PRODUCTION = os.getenv('PRODUCTION', 'False').lower() == 'true'
 DEBUG = not PRODUCTION
