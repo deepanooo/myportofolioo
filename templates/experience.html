@@ -10,7 +10,7 @@
     <section class="experience section-container">
         <div class="experience-toolbar">
             <p>{{ experiences|length }} pengalaman tercatat</p>
-            <a href="{% url 'main:create_experience' %}" class="button button-primary"><i data-lucide="plus"></i>Tambah pengalaman</a>
+            {% if user.is_superuser %}<a href="{% url 'main:create_experience' %}" class="button button-primary"><i data-lucide="plus"></i>Tambah pengalaman</a>{% endif %}
         </div>
         <div class="experience-list">
             {% for exp in experiences %}
@@ -20,14 +20,14 @@
                         <span class="experience-tag">{{ exp.category }}</span>
                         <h3>{{ exp.title }}</h3>
                         <p>{{ exp.description }}</p>
-                        <div class="experience-actions">
+                        {% if user.is_superuser %}<div class="experience-actions">
                             <a href="{% url 'main:edit_experience' exp.id %}" class="experience-edit"><i data-lucide="pencil"></i>Edit</a>
                             {% include "components/experience_delete_modal.html" with experience=exp %}
-                        </div>
+                        </div>{% endif %}
                     </div>
                 </article>
             {% empty %}
-                <p class="empty-state">Belum ada pengalaman yang ditambahkan. Mulai tambahkan pengalaman pertamamu.</p>
+                <p class="empty-state">Belum ada pengalaman yang ditambahkan.</p>
             {% endfor %}
         </div>
     </section>

@@ -1,4 +1,5 @@
 import uuid
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
 
@@ -26,6 +27,7 @@ class Project(models.Model):
     tech_stack = models.CharField(max_length=255)
     repository_url = models.URLField(blank=True, default="")
     project_image_url = models.URLField(blank=True, default="", max_length=500)
+    starred_by = models.ManyToManyField(User, related_name="starred_projects", blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

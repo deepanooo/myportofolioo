@@ -251,6 +251,8 @@ section {
     color: var(--text);
 }
 
+.nav-user { color: var(--cyan-light); font-size: 14px; font-weight: 700; }
+
 .nav-button {
     display: inline-flex;
     align-items: center;
@@ -2068,6 +2070,15 @@ section {
 
 .footer-socials .social-github:hover { color: #ffffff; }
 .footer-socials .social-linkedin:hover { color: #60a5fa; }
+
+.star-form { display: inline; }
+.button-star { display: inline-flex; align-items: center; gap: 0.4rem; padding: 8px 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-light); color: var(--text); cursor: pointer; }
+.button-star.is-starred { border-color: rgba(20, 216, 208, 0.55); background: rgba(20, 216, 208, 0.18); color: var(--cyan-light); }
+.star-count { padding: 0.05rem 0.4rem; border-radius: 999px; background: rgba(255, 255, 255, 0.12); font-size: 0.8rem; }
+.last-login { margin-top: 18px; color: var(--text-muted); font-size: 13px; }
+.form-help { margin-top: 7px; color: var(--text-muted); font-size: 12px; }
+.form-help ul { margin: 7px 0 0 18px; list-style: disc; }
+.form-help li { margin-top: 4px; }
 .footer-socials .social-instagram:hover { color: #f472b6; }
 
 .footer-socials .social-icon {
