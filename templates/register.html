@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Register | DeepPerceptron.{% endblock title %}
+
+{% block content %}
+<main>
+    <section class="page-hero section-container project-form-section">
+        <span class="section-label">JOIN THE COMMUNITY</span>
+        <h1>Buat <em>akun.</em></h1>
+        <p>Daftar untuk memberi star pada proyek.</p>
+        <form method="post" action="{% url 'main:register' %}" class="project-form">
+            {% csrf_token %}
+            {% for error in form.non_field_errors %}<p class="form-error">{{ error }}</p>{% endfor %}
+            {% for field in form %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.help_text %}<div class="form-help">{{ field.help_text|safe }}</div>{% endif %}
+                    {% for error in field.errors %}<p class="form-error">{{ error }}</p>{% endfor %}
+                </div>
+            {% endfor %}
+            <div class="form-actions"><button type="submit" class="button button-primary">Daftar</button></div>
+        </form>
+        <p>Sudah punya akun? <a href="{% url 'main:login' %}">Login di sini</a>.</p>
+    </section>
+</main>
+{% endblock content %}
