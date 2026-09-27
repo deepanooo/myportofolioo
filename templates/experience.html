@@ -20,9 +20,11 @@
                         <span class="experience-tag">{{ exp.category }}</span>
                         <h3>{{ exp.title }}</h3>
                         <p>{{ exp.description }}</p>
-                        {% if user.is_superuser %}<div class="experience-actions">
+                        {% if user.is_superuser or is_editor %}<div class="experience-actions">
                             <a href="{% url 'main:edit_experience' exp.id %}" class="experience-edit"><i data-lucide="pencil"></i>Edit</a>
+                            {% if user.is_superuser %}
                             {% include "components/experience_delete_modal.html" with experience=exp %}
+                            {% endif %}
                         </div>{% endif %}
                     </div>
                 </article>

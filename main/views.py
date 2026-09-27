@@ -13,6 +13,10 @@ from main.forms import ExperienceForm, ProjectForm
 from main.models import Experience, Project
 
 
+def is_editor(user):
+    return user.is_authenticated and user.groups.filter(name="Editor").exists()
+
+
 def show_main(request):
     return render(request, "index.html", {
         "last_login": request.COOKIES.get("last_login", "Belum ada sesi login / Cookie tidak ditemukan"),
@@ -65,7 +69,10 @@ def delete_project(request, project_id):
 
 
 def show_experience(request):
-    return render(request, "experience.html", {"experiences": Experience.objects.order_by("-started_at")})
+    return render(request, "experience.html", {
+        "experiences": Experience.objects.order_by("-started_at"),
+        "is_editor": is_editor(request.user),
+    })
 
 
 @login_required(login_url="/login/")
@@ -82,7 +89,7 @@ def create_experience(request):
 
 @login_required(login_url="/login/")
 def edit_experience(request, experience_id):
-    if not request.user.is_superuser:
+    if not (request.user.is_superuser or is_editor(request.user)):
         raise PermissionDenied
     experience = get_object_or_404(Experience, pk=experience_id)
     form = ExperienceForm(request.POST or None, instance=experience)
