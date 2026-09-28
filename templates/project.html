@@ -39,6 +39,7 @@
                             {% if project.repository_url %}
                                 <a href="{{ project.repository_url }}" class="project-link" target="_blank" rel="noopener">Lihat proyek <i data-lucide="arrow-up-right"></i></a>
                             {% endif %}
+                            {% if user.is_superuser or is_editor %}<a href="{% url 'main:edit_project' project.id %}" class="project-link">Edit <i data-lucide="pencil"></i></a>{% endif %}
                             {% if user.is_superuser %}{% include "components/project_delete_modal.html" with project=project %}{% endif %}
                         </div>
                     </div>

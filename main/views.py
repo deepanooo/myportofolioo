@@ -5,8 +5,10 @@ from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.utils.http import url_has_allowed_host_and_scheme
 from django.core import serializers
 from django.http import HttpResponse
+from django.views.decorators.http import require_POST
 from django.shortcuts import get_object_or_404, redirect, render
 
 from main.forms import ExperienceForm, ProjectForm
@@ -24,12 +26,12 @@ def show_main(request):
 
 
 def show_project(request):
-    json_response = get_projects_json(request)
-    projects = serializers.deserialize("json", json_response.content.decode("utf-8"))
     title_query = request.GET.get("title", "").strip()
+    projects = Project.objects.all()
     context = {
-        "project_list": [project.object for project in projects],
+        "project_list": projects.filter(title__icontains=title_query) if title_query else projects,
         "title_query": title_query,
+        "is_editor": is_editor(request.user),
     }
     return render(request, "projects.html", context)
 
@@ -46,25 +48,41 @@ def create_project(request):
     return render(request, "projects_form.html", {"form": form})
 
 
+@login_required(login_url="/login/")
+def edit_project(request, project_id):
+    if not (request.user.is_superuser or is_editor(request.user)):
+        raise PermissionDenied
+    project = get_object_or_404(Project, pk=project_id)
+    form = ProjectForm(request.POST or None, instance=project)
+    if request.method == "POST" and form.is_valid():
+        form.save()
+        messages.success(request, "Proyek berhasil diperbarui!")
+        return redirect("main:show_project")
+    return render(request, "projects_form.html", {"form": form, "is_edit": True, "project": project})
+
+
 def get_projects_json(request):
     title_query = request.GET.get("title", "").strip()
     projects = Project.objects.all()
     if title_query:
         projects = projects.filter(title__icontains=title_query)
     return HttpResponse(
-        serializers.serialize("json", projects, use_natural_foreign_keys=True),
+        serializers.serialize(
+            "json", projects,
+            fields=("title", "description", "tech_stack", "repository_url", "project_image_url", "created_at"),
+        ),
         content_type="application/json",
     )
 
 
+@require_POST
 @login_required(login_url="/login/")
 def delete_project(request, project_id):
     if not request.user.is_superuser:
         raise PermissionDenied
     project = get_object_or_404(Project, pk=project_id)
-    if request.method == "POST":
-        project.delete()
-        messages.success(request, "Proyek berhasil dihapus!")
+    project.delete()
+    messages.success(request, "Proyek berhasil dihapus!")
     return redirect("main:show_project")
 
 
@@ -100,14 +118,14 @@ def edit_experience(request, experience_id):
     return render(request, "experience_form.html", {"form": form, "is_edit": True})
 
 
+@require_POST
 @login_required(login_url="/login/")
 def delete_experience(request, experience_id):
     if not request.user.is_superuser:
         raise PermissionDenied
     experience = get_object_or_404(Experience, pk=experience_id)
-    if request.method == "POST":
-        experience.delete()
-        messages.success(request, "Pengalaman berhasil dihapus!")
+    experience.delete()
+    messages.success(request, "Pengalaman berhasil dihapus!")
     return redirect("main:show_experience")
 
 
@@ -124,7 +142,10 @@ def login_user(request):
     form = AuthenticationForm(request, data=request.POST or None)
     if request.method == "POST" and form.is_valid():
         login(request, form.get_user())
-        response = redirect("main:show_main")
+        redirect_to = request.POST.get("next") or request.GET.get("next", "")
+        if not url_has_allowed_host_and_scheme(redirect_to, allowed_hosts={request.get_host()}):
+            redirect_to = "main:show_main"
+        response = redirect(redirect_to)
         response.set_cookie("last_login", datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
         return response
     return render(request, "login.html", {"name": "Muhammad Adib Islami", "form": form})
@@ -138,11 +159,11 @@ def logout_user(request):
 
 
 @login_required(login_url="/login/")
+@require_POST
 def toggle_star(request, project_id):
     project = get_object_or_404(Project, pk=project_id)
-    if request.method == "POST":
-        if request.user in project.starred_by.all():
-            project.starred_by.remove(request.user)
-        else:
-            project.starred_by.add(request.user)
+    if project.starred_by.filter(pk=request.user.pk).exists():
+        project.starred_by.remove(request.user)
+    else:
+        project.starred_by.add(request.user)
     return redirect("main:show_project")

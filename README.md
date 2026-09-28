@@ -80,5 +80,6 @@ fungsi yang berbeda.
   Perintah ini digunakan untuk menjalankan migration yang telah dibuat
   dan menerapkan perubahan struktur database yang diperlukan.
 
-# DEKLARASI AI
-AI digunakan untuk membantu proses pembuatan website menambahkan style dengan syntax yang rumit.
+# Deklarasi AI
+
+AI (OpenAI Codex) membantu meninjau instruksi tugas dan menyusun implementasi pemeriksaan akses Editor, edit proyek, pembatasan endpoint POST, serta penyaringan field pada API JSON. Perubahan ditinjau dan disesuaikan dengan struktur aplikasi Django yang sudah ada; pemilik proyek tetap perlu memeriksa hasil dan menjalankan aplikasi sebelum pengumpulan.
