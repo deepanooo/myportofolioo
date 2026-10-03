@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}DeepPerceptron. | Muhammad Adib Islami{% endblock title %}</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=20260918-3">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=20260930-3">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
@@ -28,12 +28,14 @@
             {% if user.is_authenticated %}
                 <span class="nav-user">{{ user.username }}</span>
                 <a href="{% url 'main:logout' %}">Logout</a>
-            {% else %}
-                <a href="{% url 'main:login' %}"{% if request.path == '/login/' %} class="active"{% endif %}>Login</a>
-                <a href="{% url 'main:register' %}"{% if request.path == '/register/' %} class="active"{% endif %}>Register</a>
             {% endif %}
         </nav>
-        <a href="{% url 'main:show_project' %}" class="nav-button">View Project <i data-lucide="arrow-up-right"></i></a>
+        {% if not user.is_authenticated %}
+        <div class="nav-auth-actions">
+            <a href="{% url 'main:login' %}"{% if request.path == '/login/' %} class="active"{% endif %}>Login</a>
+            <a href="{% url 'main:register' %}"{% if request.path == '/register/' %} class="active"{% endif %}>Register</a>
+        </div>
+        {% endif %}
         <button class="menu-toggle" type="button" aria-label="Buka menu"><i data-lucide="menu"></i></button>
     </header>
 
@@ -62,6 +64,7 @@
             </div>
         </div>
     </footer>
+    {% include "components/toast.html" %}
     <script>
         lucide.createIcons();
         const menuToggle = document.querySelector('.menu-toggle');
