@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.test import TestCase
 from django.urls import reverse
 from django.utils import timezone
@@ -57,14 +58,49 @@ class ProjectTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "projects.html")
 
-    def test_project_data_appears(self):
+    def test_project_page_renders_ajax_states_without_project_data(self):
         response = self.client.get(reverse("main:show_project"))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, self.project.title)
-        self.assertContains(response, self.project.description)
+        self.assertContains(response, "Memuat proyek...")
+        self.assertContains(response, 'id="empty"')
+        self.assertContains(response, 'id="error"')
+        self.assertContains(response, 'id="grid"')
+        self.assertNotContains(response, self.project.title)
 
-    def test_empty_project_page(self):
-        Project.objects.all().delete()
-        response = self.client.get(reverse("main:show_project"))
+    def test_projects_json_returns_data_and_star_state(self):
+        response = self.client.get(reverse("main:get_projects_json"))
+
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Belum ada proyek yang ditambahkan.")
+        self.assertEqual(response["Content-Type"], "application/json")
+        self.assertEqual(response.json(), [{
+            "pk": str(self.project.pk),
+            "fields": {
+                "title": self.project.title,
+                "description": self.project.description,
+                "tech_stack": self.project.tech_stack,
+                "repository_url": "",
+                "project_image_url": "",
+                "star_count": 0,
+                "is_starred": False,
+                "starred_by_names": "",
+            },
+        }])
+
+    def test_projects_json_includes_logged_in_users_star(self):
+        user = User.objects.create_user(username="star-user", password="test-password")
+        self.project.starred_by.add(user)
+        self.client.force_login(user)
+
+        response = self.client.get(reverse("main:get_projects_json"))
+        project_data = response.json()[0]["fields"]
+
+        self.assertEqual(project_data["star_count"], 1)
+        self.assertTrue(project_data["is_starred"])
+        self.assertEqual(project_data["starred_by_names"], "star-user")
+
+    def test_empty_projects_json_returns_empty_list(self):
+        Project.objects.all().delete()
+        response = self.client.get(reverse("main:get_projects_json"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), [])
