@@ -7,7 +7,7 @@ from django.core.exceptions import PermissionDenied
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.utils.http import url_has_allowed_host_and_scheme
 from django.http import JsonResponse
-from django.views.decorators.http import require_POST
+from django.views.decorators.http import require_GET, require_POST
 from django.shortcuts import get_object_or_404, redirect, render
 
 from main.forms import ExperienceForm, ProjectForm
@@ -59,6 +59,7 @@ def edit_project(request, project_id):
     return render(request, "projects_form.html", {"form": form, "is_edit": True, "project": project})
 
 
+@require_GET
 def get_projects_json(request):
     title_query = request.GET.get("title", "").strip()
     projects = Project.objects.prefetch_related("starred_by").all()
